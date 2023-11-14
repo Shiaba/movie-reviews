@@ -25,3 +25,18 @@ class review(models.Model):
 
     def number_of_likes(self):
         return self.likes.count()
+
+
+class Comment(models.Model):
+    body = models.TextField()
+    email = models.EmailField()
+    name = models.CharField(max_length=80)
+    approved = models.BooleanField(default=False)
+    created_on = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(review, on_delete=models.CASCADE, related_name='comments')
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return f'Comment {self.body} by {self.name}'
