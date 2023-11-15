@@ -1,39 +1,135 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# movie reviews
+# (Add more text here & Am I responsive image)
+![Am I responsive image of Number Guessing Game website]()
 
-Welcome,
+[You can view this site here]()
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+## Content
 
-## Codeanywhere Reminders
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+### [Features](#features-1)
 
-`python3 -m http.server`
+- [Features yet to add](#features-yet-to-add)
+- [Wireframes](#wireframes)
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+### [Database Design](#database-design-1)
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+### [Technologies Used](#technologies-used-1)
 
-`http_server`
+### [Bug Encounters](#bug-encounters-1)
+  - [Solved](#solved)
+  - [Unsolved and scrapped features](#unsolved-and-scrapped-features)
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+### [Testing](#testing-1)
+  - [Manual testing](#manual-testing)
+  - [Validator testing](#validator-testing)
+  - [Accessibility](#accessibility)
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
 
-To log into the Heroku toolbelt CLI:
+### [Deployment](#deployment-1)
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+### [Credits](#credits-1)
 
----
 
-Happy coding!
+
+## Features
+
+
+
+### Features yet to add
+
+
+### Wireframes
+I created the flowchart on [wireframe.cc](https://wireframe.cc/), then printed the creation instead of saving it.
+
+- [Wireframe](/images/wireframe/main-page.png)
+- [Wireframe](/images/wireframe/review-page.png)
+- [Wireframe](/images/wireframe/sign-in.png)
+- [Wireframe](/images/wireframe/sign-out.png)
+- [Wireframe](/images/wireframe/sign-up.png)
+
+[Back to top](#content)
+
+
+## Database Design:
+# (Add & change texts here)
+- Database model
+- Custom model
+- CRUD
+
+
+## Technologies Used:
+# (Add & change texts here)
+- Ex: Python libraries
+- Django libraries
+- External libraries
+- Database?
+- Work environments & hosting
+
+
+
+## Testing
+# (Add more text here, Test on Microsoft edge, Chrome & Firefox)
+
+### Manual testing
+# (Add more text here)
+
+
+
+### Validator testing
+# (Add more text here & possibly change the content already added)
+
+
+- [CI Python Linter]()
+- [Python syntax checker]()
+
+### Accessibility
+ 
+ [Lighthouse testing]()
+
+
+[Back to top](#content)
+
+## Bug Encounters
+
+### Solved
+
+
+
+### Unsolved and scrapped features
+
+
+[Back to top](#content)
+
+## Deployment
+# (Add more text here & change method)
+- Create a new Heroku app
+- Name app name & choose region
+- Go to settings, add key = PORT, VALUE = 8000. Then add buildpacks(in this order):
+  - heroku/python, 
+  - heroku/nodejs
+
+- On deployment method, github is chosen.
+- Search repository name.
+
+- Choose manual deploy & if wanted "Enable Automatic Deploys", which keeps the project up to date through your Github repository
+
+
+[Back to top](#content)
+
+## Credits
+
+
+### Code inspiration:
+# (Add more text here)
+- In order to do things correctly, I've followed the "I Think Therefore I Blog" very carefully.
+
+ - [Link here](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+FST101+2021_T1/courseware/b31493372e764469823578613d11036b/fe4299adcd6743328183aab4e7ec5d13/)
+
+
+[Back to top](#content)
+
+
