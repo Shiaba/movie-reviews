@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,25 +14,30 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
 
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/69f27fd7ee.js" crossorigin="anonymous"></script>
+
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
 
-    <title>Movie reviews</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Movie Reviews</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Movie Reviews</a>
+            <a class="navbar-brand" href="index.html">Movie Reviews</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="#">Create Review</a>
+                    <a class="nav-link active" aria-current="page" href="create-review.html">Review Movie</a>
                     <a class="nav-link" href="#">Contact Us</a>
                     <a class="nav-link" href="#">Register</a>
                     <a class="nav-link" href="#">Log in</a>
@@ -38,5 +45,23 @@
             </div>
         </div>
     </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        
+        {% endblock content %}
+    </main>
+    
+    <!-- Footer -->
+    <footer id="footer">
+        <ul id="social-media">
+            <li><a id="facebook" href="https://facebook.com" rel="noopener" aria-label="Visit us on Facebook (opens in a new tab)" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a id="twitter" href="https://twitter.com" rel="noopener" aria-label="Visit us on Twitter (opens in a new tab)" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+            <li><a id="youtube" href="https://youtube.com" rel="noopener" aria-label="Visit us on Youtube (opens in a new tab)" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+            <li><a id="instagram" href="https://instagram.com" rel="noopener" aria-label="Visit us on Instagram (opens in a new tab)" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+        </ul>
+    </footer>
+
 </body>
 </html>

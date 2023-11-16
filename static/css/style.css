@@ -1,0 +1,35 @@
+
+/* footer */
+#footer {
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    z-index: 0;
+    width: 100%;
+}
+
+/* Social media icons */
+#social-media {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-content: space-evenly;
+    font-size: 180%;
+    margin: 20px;
+    list-style: none;
+}
+
+#facebook {
+    color: #4267B2;
+}
+
+#twitter {
+    color: white;
+}
+
+#youtube {
+    color: #FF0000;
+}
+
+#instagram {
+    color: #C13584;
+}
