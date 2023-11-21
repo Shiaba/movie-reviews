@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import review, Comment
+from .models import Review, Comment
 from django_summernote.admin import SummernoteModelAdmin
 
 
-@admin.register(review)
+@admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
     summernote_fields = ('content')
     prepopulated_fields = {'slug': ('title',)}
