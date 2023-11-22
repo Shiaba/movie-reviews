@@ -44,8 +44,12 @@
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="#">Review Movie</a>
                     <a class="nav-link" href="#">Contact Us</a>
-                    <a class="nav-link" href="#">Register</a>
-                    <a class="nav-link" href="#">Log in</a>
+                    {% if user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    {% else %}
+                    <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+                    <a class="nav-link" href="{% url 'account_login' %}">Log in</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
