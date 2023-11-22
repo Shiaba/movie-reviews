@@ -1,42 +1,64 @@
+{% extends 'base.html' %} {% block content %}
+
 <div class="review-detail">
     <div class="container">
         <div class="row justify-content-center">
             <div class="row p-2">
                 <div class="img-fluid">
+                    {% if 'placeholder' in review.featured_image.url %}
                     <img class="" src="http://www.reellifewisdom.com/files/images/braveheart.bmp" alt="">
+                    {% else %}
+                    <img class="" src="{{ review.featured_image.url }}" alt="">
+                    {% endif %}
                 </div>
                 <br>
                 <div class="review-title col-12 col-md-6 col-lg-6">
-                    <h2 class=""> Movie Title</h2>
+                    <h2 class="">{{ review.title }}</h2>
                     <div class="">
-                        <label class="text-primary">Author name,</label>
-                        <span class="fs-5">Time added</span>
+                        <label class="text-primary">{{ review.author }}</label>
+                        <span class="fs-5">{{ review.created_on }}</span>
                     </div>
-                    <div class="movie-review-content">Movie review
-                        <p>Lorem Ipsum</p>
+                    <div class="movie-review-content">
+                        <p>
+                            {{ review.content | safe }}
+                        </p>
                     </div>
-                    <div>Like & more?
-                        <img src="" alt="">
+                    <div class="row">
+                        <div class="col-1">
+                            <strong class="text-secondary"><i class="fa-regular fa-thumbs-up"></i> {{ review.number_of_likes }} </strong>
+                        </div>
+                        <div class="col-1">
+                            {% with comments.count as total_comments %}
+                            <strong class="text-secondary"><i class="far fa-comments"></i>{{ total_comments }}</strong>
+                            {% endwith %}
+                        </div>
                     </div>
+                    <!-- Add comments -->
                     <hr class="my-5">
                     <div>
                     <h2>New Comment</h2>
                     </div>
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                        <label for="floatingTextarea">Comments</label>
+                        <textarea class="textarea form-control" style="height: 200px;" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        <label class="" for="floatingTextarea">Leave a comment here</label>
                     </div>
                     <div class="col-12 col-md-6 col-lg-6">
                         <button type="submit" class="btn btn-primary justify-content-end mt-2">Submit</button>
                     </div>
                     <br>
+                    
+                    <!-- Created comments -->
+                    {% for comment in comments %}
                     <div>
                         <h2>Comment section</h2>
-                        <div>Written comments</div>
-                        <div>Date written</div>
+                        <div>{{ comment.body | linebreaks }}</div>
+                        <div>{{ comment.name }} | {{ comment.created_on }}</div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+{% endblock content %}

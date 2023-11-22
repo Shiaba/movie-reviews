@@ -20,12 +20,12 @@
                             <p class="card-text">{{ review.author }}</p>
                             <p class="card-text">{{ review.excerpt }}</p>
                             <hr />
-                            <p class="card-text">{{ review.created_on}}
+                            <p class="card-text">{{ review.created_on }}
                                 <hr>
                                 <i class="fa-regular fa-thumbs-up"></i>{{ review.number_of_likes }}
                             </p>
                             <hr />
-                            <a href="#" class="btn view">Go somewhere</a>
+                            <a href="{% url 'review_detail' review.slug %}" class="btn view">Go somewhere</a>
                         </div>
                     </div>
                 </div>
