@@ -12,12 +12,9 @@
         <h3>{% trans "Log In" %}</h3>
         <p class="mb-3">Welcome to Movie Reviews!</p>
         <div class="row justify-content-start">
-            {% csrf_token %}
-            
             <div class="col-sm-12 mt-2 mb-3">
                 {{ form.login.label_tag }}
                 <input type="text" class="form-control" id="name" name="{{ form.login.name }}">
-                
             </div>
         </div>
         <div class="row justify-content-start">

@@ -8,16 +8,16 @@
 <div class="container justify-content-center align-items-center mt-5" style="max-width: 33rem;">
     <div class="card p-5">
         <div class="card-body">
-            <h1 class="row justify-content-center">{% trans "Sign Out" %}</h1>
+            <h1 class="row justify-content-center">{% trans "Log Out" %}</h1>
         </div>
         <br>
-        <p class="row justify-content-center mb-5">{% trans 'Are you sure you want to sign out?' %}</p>
+        <p class="row justify-content-center mb-5">{% trans 'Are you sure you want to log out?' %}</p>
         <form method="post" action="{% url 'account_logout' %}">
             {% csrf_token %}
             {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
-            <button class="btn btn-danger d-grid gap-2 col-6 mx-auto" type="submit">{% trans 'Sign Out' %}</button>
+            <button class="btn btn-danger d-grid gap-2 col-6 mx-auto" type="submit">{% trans 'Log Out' %}</button>
         </form>
     </div>
 </div>
