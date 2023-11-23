@@ -5,7 +5,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
-    summernote_fields = ('content')
+    summernote_fields = ('content',)
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('status', 'created_on')
     search_fields = ['title', 'content']
@@ -18,3 +18,6 @@ class CommentAdmin(admin.ModelAdmin):
     list_filter = ('created_on', 'approved')
     search_fields = ('name', 'body', 'email')
     actions = ['approve_comments']
+
+    def approve_comments(self, request, queryset):
+        queryset.update(approved=True)

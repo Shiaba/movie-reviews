@@ -1,5 +1,8 @@
 {% extends 'base.html' %} {% block content %}
 
+{% load crispy_forms_tags %}
+
+<!-- Review -->
 <div class="review-detail">
     <div class="container">
         <div class="row justify-content-center">
@@ -33,20 +36,27 @@
                             {% endwith %}
                         </div>
                     </div>
+
                     <!-- Add comments -->
+                    {% if commented %}
+                    <div class="alert alert-success" role="alert">
+                        Your comment is Succesfully added
+                    </div>
+                    {% else %}
+
+                    {% if user.is_authenticated %}
                     <hr class="my-5">
-                    <div>
-                    <h2>New Comment</h2>
-                    </div>
-                    <div class="form-floating">
-                        <textarea class="textarea form-control" style="height: 200px;" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                        <label class="" for="floatingTextarea">Leave a comment here</label>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-6">
-                        <button type="submit" class="btn btn-primary justify-content-end mt-2">Submit</button>
-                    </div>
+                    <h2>Leave Comment:</h2>
+                    <p>Posting as: {{ user.username }}</p>
+                    <form class="form-floating" method="post" style="height: 200px;">
+                        {% csrf_token %}
+                        {{ comment_form | crispy }}
+                        <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                    </form>
+                    {% endif %}
+                    {% endif %}
                     <br>
-                    
+
                     <!-- Created comments -->
                     {% for comment in comments %}
                     <div>
