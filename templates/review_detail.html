@@ -63,8 +63,8 @@
 
           <!-- Add comments -->
           {% if commented %}
-          <div class="alert alert-success" role="alert">
-            Your comment is Succesfully added
+          <div class="alert alert-success mt-2" role="alert" id="msg">
+            Your comment is awaiting approval.
           </div>
           {% else %} {% if user.is_authenticated %}
           <hr class="my-5" />
