@@ -35,7 +35,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['shiaba-movie-reviews-ef013a07675f.herokuapp.com',
                  'localhost', '8000-shiaba-movie-reviews-gee8xszvwg.us2.codeanyapp.com']
 
-CSRF_TRUSTED_ORIGINS = ['https://*8000-shiaba-movie-reviews-gee8xszvwg.us2.codeanyapp.com']
+CSRF_TRUSTED_ORIGINS = [
+    'https://*8000-shiaba-movie-reviews-gee8xszvwg.us2.codeanyapp.com']
 
 # Application definition
 

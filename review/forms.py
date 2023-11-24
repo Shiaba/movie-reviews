@@ -1,8 +1,18 @@
-from .models import Comment
+from .models import Comment, Review
 from django import forms
+from django.forms import ModelForm
+from django_summernote.widgets import SummernoteWidget
 
 
-class CommentForm(forms.ModelForm):
+class CommentForm(ModelForm):
     class Meta:
         model = Comment
         fields = ('body',)
+
+
+class ReviewForm(ModelForm):
+    model = Review
+    fields = ['title', 'featured_image', 'content']
+    widgets = {
+        'content': SummernoteWidget(),
+    }

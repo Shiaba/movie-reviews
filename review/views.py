@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.views.generic.edit import CreateView
 from .models import Review
 from .forms import CommentForm
 
@@ -64,6 +65,17 @@ class ReviewDetail(View):
                 'comment_form': CommentForm,
             },
         )
+
+
+def createreview(request):
+    return render(request, 'create_review.html', {})
+
+
+class CreateReview(CreateView):
+
+    model = Review
+    template_name = 'create_review.html'
+    fields = '__all__'
 
 
 class ReviewLike(View):
