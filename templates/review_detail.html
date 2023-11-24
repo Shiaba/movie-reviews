@@ -28,7 +28,25 @@
                     </div>
                     <div class="row">
                         <div class="col-1">
-                            <strong class="text-secondary"><i class="fa-regular fa-thumbs-up"></i> {{ review.number_of_likes }} </strong>
+                            <strong>
+                                {% if user.is_authenticated %}
+                                <form class="d-inline-flex" action="{% 'review_like' review.slug %}" method="POST">
+                                    {% csrf_token %}
+                                    {% if liked %}
+                                    <button type="submit" name="moviewreview_id" {{review.slug}} class="btn-like">
+                                        <i class="fa-solid fa-thumbs-up"></i></button>
+                                    {% else %}
+                                    <button type="submit" name="moviewreview_id" {{review.slug}} class="btn-like">
+                                        <i class="fa-regular fa-thumbs-up"></i></button>
+                                    {% endif %}
+
+                                </form>
+                                {% else %}
+                                <span class="text-secondary"><i class="fa-regular fa-thumbs-up"></i></span>
+                                {% endif %}
+                                <span class="text-secondary"> {{ review.number_of_likes }}</span>
+                            </strong>
+                           
                         </div>
                         <div class="col-1">
                             {% with comments.count as total_comments %}
