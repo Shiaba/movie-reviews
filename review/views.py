@@ -68,7 +68,7 @@ class ReviewDetail(View):
 
 class ReviewLike(View):
 
-    def post(self, request, slug, review):
+    def post(self, request, slug, *args, **kvargs):
         review = get_object_or_404(Review, slug=slug)
 
         if review.likes.filter(id=request.user.id).exists():

@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %} {% load crispy_forms_tags %}
+{% extends 'base.html' %} {% block content %} 
+
+{% load crispy_forms_tags %}
 
 <!-- Review -->
 <div class="review-detail">
@@ -26,51 +28,36 @@
           <div class="movie-review-content">
             <p>{{ review.content | safe }}</p>
           </div>
+
+          <!-- Like & like/comments counter -->
           <div class="row">
             <div class="col-1">
               <strong>
                 {% if user.is_authenticated %}
-                <form
-                  class="d-inline-flex"
-                  action=""
-                  method="POST"
-                >
-                  {% csrf_token %} {% if liked %}
-                  <button
-                    type="submit"
-                    name="moviewreview_id"
-                    {{post.slug}}
-                    class="btn-like"
-                  >
+                <form class="d-inline-flex" action="{% url 'review_like' review.slug %}" method="POST">
+                  {% csrf_token %} 
+                  {% if liked %}
+                  <button type="submit" name="moviewreview_id" value="{{review.slug}}" class="btn-like">
                     <i class="fa-solid fa-thumbs-up"></i>
                   </button>
                   {% else %}
-                  <button
-                    type="submit"
-                    name="moviewreview_id"
-                    {{post.slug}}
-                    class="btn-like"
-                  >
+                  <button type="submit" name="moviewreview_id" value="{{review.slug}}" class="btn-like">
                     <i class="fa-regular fa-thumbs-up"></i>
                   </button>
                   {% endif %}
                 </form>
                 {% else %}
-                <span class="text-secondary"
-                  ><i class="fa-regular fa-thumbs-up"></i
-                ></span>
-                {% endif %}
                 <span class="text-secondary">
-                  {{ review.number_of_likes }}</span
-                >
+                    <i class="fa-regular fa-thumbs-up"></i>
+                </span>
+                {% endif %}
+                <span class="text-secondary">{{ review.number_of_likes }}</span>
               </strong>
             </div>
             <div class="col-1">
-              {% with comments.count as total_comments %}
-              <strong class="text-secondary"
-                ><i class="far fa-comments"></i>{{ total_comments }}</strong
-              >
-              {% endwith %}
+                {% with comments.count as total_comments %}
+                <strong class="text-secondary"><i class="far fa-comments"></i>{{ total_comments }}</strong>
+                {% endwith %}
             </div>
           </div>
 
