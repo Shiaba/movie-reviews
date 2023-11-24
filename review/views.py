@@ -15,7 +15,7 @@ class MovieList(generic.ListView):
 
 class ReviewDetail(View):
 
-    def get(self, request, slug, *args, **kvargs):
+    def get(self, request, slug, *args, **kwargs):
         queryset = Review.objects.filter(status=1)
         review = get_object_or_404(queryset, slug=slug)
         comments = review.comments.filter(approved=True).order_by('created_on')
@@ -35,7 +35,7 @@ class ReviewDetail(View):
             },
         )
 
-    def post(self, request, slug, *args, **kvargs):
+    def post(self, request, slug, *args, **kwargs):
         queryset = Review.objects.filter(status=1)
         review = get_object_or_404(queryset, slug=slug)
         comments = review.comments.filter(approved=True).order_by('created_on')
@@ -80,7 +80,7 @@ class CreateReview(CreateView):
 
 class ReviewLike(View):
 
-    def post(self, request, slug, *args, **kvargs):
+    def post(self, request, slug, *args, **kwargs):
         review = get_object_or_404(Review, slug=slug)
 
         if review.likes.filter(id=request.user.id).exists():
