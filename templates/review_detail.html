@@ -32,7 +32,7 @@
                 {% if user.is_authenticated %}
                 <form
                   class="d-inline-flex"
-                  action="{% 'review_like' post.slug %}"
+                  action=""
                   method="POST"
                 >
                   {% csrf_token %} {% if liked %}
@@ -91,11 +91,11 @@
           <br />
 
           <!-- Created comments -->
+          <h2>Comment section</h2>
           {% for comment in comments %}
           <div>
-            <h2>Comment section</h2>
-            <div>{{ comment.body | linebreaks }}</div>
             <div>{{ comment.name }} | {{ comment.created_on }}</div>
+            <div>{{ comment.body | linebreaks }}</div>
           </div>
           {% endfor %}
         </div>

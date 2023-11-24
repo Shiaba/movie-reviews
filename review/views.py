@@ -48,7 +48,7 @@ class ReviewDetail(View):
             comment_form.instance.email = request.user.email
             comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
-            comment.review = review
+            comment.post = review
             comment.save()
         else:
             comment_form = CommentForm()
@@ -65,6 +65,7 @@ class ReviewDetail(View):
             },
         )
 
+
 class ReviewLike(View):
 
     def post(self, request, slug, review):
@@ -74,5 +75,5 @@ class ReviewLike(View):
             review.likes.remove(request.user)
         else:
             review.likes.add(request.user)
-        
-        return HttpResponseRedirect(reverse('review_detail' args=[slug]))
+
+        return HttpResponseRedirect(reverse('review_detail', args=[slug]))
