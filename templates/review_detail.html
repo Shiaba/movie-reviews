@@ -1,92 +1,107 @@
-{% extends 'base.html' %} {% block content %}
-
-{% load crispy_forms_tags %}
+{% extends 'base.html' %} {% block content %} {% load crispy_forms_tags %}
 
 <!-- Review -->
 <div class="review-detail">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="row p-2">
-                <div class="img-fluid">
-                    {% if 'placeholder' in review.featured_image.url %}
-                    <img class="" src="http://www.reellifewisdom.com/files/images/braveheart.bmp" alt="">
-                    {% else %}
-                    <img class="" src="{{ review.featured_image.url }}" alt="">
-                    {% endif %}
-                </div>
-                <br>
-                <div class="review-title col-12 col-md-6 col-lg-6">
-                    <h2 class="">{{ review.title }}</h2>
-                    <div class="">
-                        <label class="text-primary">{{ review.author }}</label>
-                        <span class="fs-5">{{ review.created_on }}</span>
-                    </div>
-                    <div class="movie-review-content">
-                        <p>
-                            {{ review.content | safe }}
-                        </p>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <strong>
-                                {% if user.is_authenticated %}
-                                <form class="d-inline-flex" action="{% 'review_like' review.slug %}" method="POST">
-                                    {% csrf_token %}
-                                    {% if liked %}
-                                    <button type="submit" name="moviewreview_id" {{review.slug}} class="btn-like">
-                                        <i class="fa-solid fa-thumbs-up"></i></button>
-                                    {% else %}
-                                    <button type="submit" name="moviewreview_id" {{review.slug}} class="btn-like">
-                                        <i class="fa-regular fa-thumbs-up"></i></button>
-                                    {% endif %}
-
-                                </form>
-                                {% else %}
-                                <span class="text-secondary"><i class="fa-regular fa-thumbs-up"></i></span>
-                                {% endif %}
-                                <span class="text-secondary"> {{ review.number_of_likes }}</span>
-                            </strong>
-                           
-                        </div>
-                        <div class="col-1">
-                            {% with comments.count as total_comments %}
-                            <strong class="text-secondary"><i class="far fa-comments"></i>{{ total_comments }}</strong>
-                            {% endwith %}
-                        </div>
-                    </div>
-
-                    <!-- Add comments -->
-                    {% if commented %}
-                    <div class="alert alert-success" role="alert">
-                        Your comment is Succesfully added
-                    </div>
-                    {% else %}
-
-                    {% if user.is_authenticated %}
-                    <hr class="my-5">
-                    <h2>Leave Comment:</h2>
-                    <p>Posting as: {{ user.username }}</p>
-                    <form class="form-floating" method="post" style="height: 200px;">
-                        {% csrf_token %}
-                        {{ comment_form | crispy }}
-                        <button type="submit" class="btn btn-primary mt-2">Submit</button>
-                    </form>
-                    {% endif %}
-                    {% endif %}
-                    <br>
-
-                    <!-- Created comments -->
-                    {% for comment in comments %}
-                    <div>
-                        <h2>Comment section</h2>
-                        <div>{{ comment.body | linebreaks }}</div>
-                        <div>{{ comment.name }} | {{ comment.created_on }}</div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="row p-2">
+        <div class="img-fluid">
+          {% if 'placeholder' in review.featured_image.url %}
+          <img
+            class=""
+            src="http://www.reellifewisdom.com/files/images/braveheart.bmp"
+            alt=""
+          />
+          {% else %}
+          <img class="" src="{{ review.featured_image.url }}" alt="" />
+          {% endif %}
         </div>
+        <br />
+        <div class="review-title col-12 col-md-6 col-lg-6">
+          <h2 class="">{{ review.title }}</h2>
+          <div class="">
+            <label class="text-primary">{{ review.author }}</label>
+            <span class="fs-5">{{ review.created_on }}</span>
+          </div>
+          <div class="movie-review-content">
+            <p>{{ review.content | safe }}</p>
+          </div>
+          <div class="row">
+            <div class="col-1">
+              <strong>
+                {% if user.is_authenticated %}
+                <form
+                  class="d-inline-flex"
+                  action="{% 'review_like' post.slug %}"
+                  method="POST"
+                >
+                  {% csrf_token %} {% if liked %}
+                  <button
+                    type="submit"
+                    name="moviewreview_id"
+                    {{post.slug}}
+                    class="btn-like"
+                  >
+                    <i class="fa-solid fa-thumbs-up"></i>
+                  </button>
+                  {% else %}
+                  <button
+                    type="submit"
+                    name="moviewreview_id"
+                    {{post.slug}}
+                    class="btn-like"
+                  >
+                    <i class="fa-regular fa-thumbs-up"></i>
+                  </button>
+                  {% endif %}
+                </form>
+                {% else %}
+                <span class="text-secondary"
+                  ><i class="fa-regular fa-thumbs-up"></i
+                ></span>
+                {% endif %}
+                <span class="text-secondary">
+                  {{ review.number_of_likes }}</span
+                >
+              </strong>
+            </div>
+            <div class="col-1">
+              {% with comments.count as total_comments %}
+              <strong class="text-secondary"
+                ><i class="far fa-comments"></i>{{ total_comments }}</strong
+              >
+              {% endwith %}
+            </div>
+          </div>
+
+          <!-- Add comments -->
+          {% if commented %}
+          <div class="alert alert-success" role="alert">
+            Your comment is Succesfully added
+          </div>
+          {% else %} {% if user.is_authenticated %}
+          <hr class="my-5" />
+          <h2>Leave Comment:</h2>
+          <p>Posting as: {{ user.username }}</p>
+          <form class="form-floating" method="post" style="height: 200px">
+            {% csrf_token %} {{ comment_form | crispy }}
+            <button type="submit" class="btn btn-primary mt-2">Submit</button>
+          </form>
+          {% endif %} {% endif %}
+          <br />
+
+          <!-- Created comments -->
+          {% for comment in comments %}
+          <div>
+            <h2>Comment section</h2>
+            <div>{{ comment.body | linebreaks }}</div>
+            <div>{{ comment.name }} | {{ comment.created_on }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
 {% endblock content %}

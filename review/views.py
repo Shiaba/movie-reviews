@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
+from django.http import HttpResponseRedirect
 from .models import Review
 from .forms import CommentForm
 
@@ -60,6 +61,18 @@ class ReviewDetail(View):
                 'comments': comments,
                 'commented': True,
                 'liked': liked,
-                'comment_form': CommentForm(),
+                'comment_form': CommentForm,
             },
         )
+
+class ReviewLike(View):
+
+    def post(self, request, slug, review):
+        review = get_object_or_404(Review, slug=slug)
+
+        if review.likes.filter(id=request.user.id).exists():
+            review.likes.remove(request.user)
+        else:
+            review.likes.add(request.user)
+        
+        return HttpResponseRedirect(reverse('review_detail' args=[slug]))
