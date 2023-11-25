@@ -2,6 +2,7 @@
 
 {% load crispy_forms_tags %}
 {% if user.is_authenticated %}
+{% if user.id == review.author.id %}
 <!-- Update Review -->
 <div class="container mt-3">
     <div class="row justify-content-center">
@@ -13,11 +14,12 @@
                     {% csrf_token %}
                     {{ form | crispy }}
                     <button class="btn btn-success my-2">Update</button>
-                    <button href="{% url 'review_detail' reveiew.slug %}" class="btn btn-warning my-2">Cancel</button>
+                    <button href="{% url 'review_detail' review.slug %}" class="btn btn-warning my-2">Cancel</button>
             </strong>
             </form>
         </div>
     </div>
 </div>
+{% endif %}
 {% endif %}
 {% endblock %}

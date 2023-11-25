@@ -66,7 +66,7 @@
                 {% if user.is_authenticated %}
                 {% if user.id == review.author.id %}
                 <button class="btn btn-warning mt-2 " type="button">
-                    <a style="color: black;" href="{% url 'update_review' %}">Edit</a>
+                    <a style="color: black;" href="{% url 'update_review' review.slug %}">Edit</a>
                 </button>
 
                 {% endif %}
