@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from django.views.generic import CreateView
+from django.contrib import messages
+from django.views.generic import CreateView, UpdateView
 from .models import Review
 from .forms import CommentForm, ReviewForm
 from django.urls import reverse_lazy
@@ -83,6 +84,23 @@ class CreateReview(CreateView):
     def form_valid(self, form):
         form.instance.author_id = self.request.user.pk
         form.instance.slug = slugify(form.instance.title)
+        success_message = "Success! Your review is awaiting approval."
+        messages.add_message(self.request, messages.SUCCESS, success_message)
+        return super().form_valid(form)
+
+
+class UpdateReview(UpdateView):
+
+    model = Review
+    template_name = 'update_review.html'
+    form_class = ReviewForm
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.instance.author_id = self.request.user.pk
+        form.instance.slug = slugify(form.instance.title)
+        success_message = "Success! Your review is awaiting approval."
+        messages.add_message(self.request, messages.SUCCESS, success_message)
         return super().form_valid(form)
 
 
