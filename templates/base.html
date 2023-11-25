@@ -75,7 +75,6 @@
               href="{% url 'create_review' %}"
               >Review Movie</a
             >
-            <a class="nav-link" href="#">Contact Us</a>
             {% if user.is_authenticated %}
             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
             {% else %}
