@@ -4,6 +4,8 @@ from django.http import HttpResponseRedirect
 from django.views.generic import CreateView
 from .models import Review
 from .forms import CommentForm, ReviewForm
+from django.urls import reverse_lazy
+from django.utils.text import slugify
 
 
 class MovieList(generic.ListView):
@@ -76,6 +78,12 @@ class CreateReview(CreateView):
     model = Review
     template_name = 'create_review.html'
     form_class = ReviewForm
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.instance.author_id = self.request.user.pk
+        form.instance.slug = slugify(form.instance.title)
+        return super().form_valid(form)
 
 
 class ReviewLike(View):
