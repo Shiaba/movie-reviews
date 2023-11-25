@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from django.views.generic.edit import CreateView
+from django.views.generic import CreateView
 from .models import Review
-from .forms import CommentForm
+from .forms import CommentForm, ReviewForm
 
 
 class MovieList(generic.ListView):
@@ -75,7 +75,7 @@ class CreateReview(CreateView):
 
     model = Review
     template_name = 'create_review.html'
-    fields = '__all__'
+    form_class = ReviewForm
 
 
 class ReviewLike(View):
