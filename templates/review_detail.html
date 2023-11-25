@@ -61,6 +61,19 @@
             </div>
           </div>
 
+            <!-- Compare user id with author id -->
+            <div class="col">
+                {% if user.is_authenticated %}
+                {% if user.id == review.author.id %}
+                <button class="btn btn-warning mt-2 " type="button">
+                    <a style="color: black;" href="{% url 'update_review' %}">Edit</a>
+                </button>
+
+                {% endif %}
+                {% endif %}
+            </div>
+            
+
           <!-- Add comments -->
           {% if commented %}
           <div class="alert alert-success mt-2" role="alert" id="msg">
