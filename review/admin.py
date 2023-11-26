@@ -1,6 +1,8 @@
 from django.contrib import admin
-from .models import Review, Comment
+from .models import Review, Comment, Category
 from django_summernote.admin import SummernoteModelAdmin
+
+admin.site.register(Category)
 
 
 @admin.register(Review)

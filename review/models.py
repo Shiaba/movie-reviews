@@ -5,6 +5,13 @@ from cloudinary.models import CloudinaryField
 STATUS = ((0, "Draft"), (1, "Published"))
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
 class Review(models.Model):
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150, unique=True)
@@ -18,6 +25,7 @@ class Review(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
         User, related_name='review_likes', blank=True)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, default=1)
 
     class Meta:
         ordering = ['-created_on']
