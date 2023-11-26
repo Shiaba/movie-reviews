@@ -13,7 +13,8 @@ class CommentForm(ModelForm):
 class ReviewForm(ModelForm):
     class Meta:
         model = Review
-        fields = ['title', 'excerpt', 'category', 'featured_image', 'content']
+        fields = ['title', 'excerpt', 'category',
+                  'rating', 'featured_image', 'content']
         widgets = {
             'content': SummernoteWidget(),
         }

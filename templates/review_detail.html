@@ -28,6 +28,10 @@
           <div class="">
             <label class="text-primary">{{ review.category }}</label>
           </div>
+            <strong class="">
+                <i class="fas fa-star" id="star-rating"></i>
+                <label class="text-primary">{{ review.rating }}</label>
+            </strong>
           <div class="movie-review-content">
             <p>{{ review.content | safe }}</p>
           </div>

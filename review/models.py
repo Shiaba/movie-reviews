@@ -4,6 +4,14 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+RATE_CHOICE = [
+    (1, '1'),
+    (2, '2'),
+    (3, '3'),
+    (4, '4'),
+    (5, '5'),
+]
+
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
@@ -26,6 +34,7 @@ class Review(models.Model):
     likes = models.ManyToManyField(
         User, related_name='review_likes', blank=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, default=1)
+    rating = models.IntegerField(choices=RATE_CHOICE, default=0)
 
     class Meta:
         ordering = ['-created_on']

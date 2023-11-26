@@ -23,6 +23,7 @@ class ReviewDetail(View):
         review = get_object_or_404(queryset, slug=slug)
         comments = review.comments.filter(approved=True).order_by('created_on')
         category = True
+        rating = True
         liked = False
         if review.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -35,6 +36,7 @@ class ReviewDetail(View):
                 'comments': comments,
                 'commented': False,
                 'liked': liked,
+                'rating': rating,
                 'category': category,
                 'comment_form': CommentForm()
             },
