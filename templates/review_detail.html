@@ -68,6 +68,9 @@
                 <button class="btn btn-warning mt-2 " type="button">
                     <a style="color: black;" href="{% url 'update_review' review.slug %}">Edit</a>
                 </button>
+                <button class="btn btn-danger mt-2 " type="button">
+                    <a style="color: black;" href="{% url 'delete_review' review.slug %}">Delete</a>
+                </button>
 
                 {% endif %}
                 {% endif %}

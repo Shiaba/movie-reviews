@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from .models import Review
 from .forms import CommentForm, ReviewForm
 from django.urls import reverse_lazy
@@ -69,6 +69,8 @@ class ReviewDetail(View):
             },
         )
 
+# Create, update & delete review
+
 
 def createreview(request):
     return render(request, 'create_review.html', {})
@@ -103,6 +105,15 @@ class UpdateReview(UpdateView):
         messages.add_message(self.request, messages.SUCCESS, success_message)
         return super().form_valid(form)
 
+
+class DeleteReview(DeleteView):
+
+    model = Review
+    template_name = 'delete_review.html'
+    success_url = reverse_lazy('home')
+
+
+# Like
 
 class ReviewLike(View):
 
