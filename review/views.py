@@ -3,7 +3,7 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView
-from .models import Review
+from .models import Review, Category
 from .forms import CommentForm, ReviewForm
 from django.urls import reverse_lazy
 from django.utils.text import slugify
@@ -14,19 +14,6 @@ class MovieList(generic.ListView):
     queryset = Review.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
     paginate_by = 6
-
-
-class CategoryList(ListView):
-    template_name = 'category_review.html'
-    context_object_name = 'movie_category'
-
-    def get_queryset(self):
-        content = {
-            'category': self.kwargs['category'],
-            'review': Review.objects.filter(
-                category__name=self.kwargs['category']).filter(status=1)
-        }
-        return content
 
 
 class ReviewDetail(View):

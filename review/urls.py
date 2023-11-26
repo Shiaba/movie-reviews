@@ -12,6 +12,4 @@ urlpatterns = [
          views.CreateReview.as_view(), name='update_review'),
     path('delete_review/<slug:slug>/remove',
          views.DeleteReview.as_view(), name='delete_review'),
-    path('category_review/<category>/',
-         views.CategoryList.as_view(), name='category'),
 ]
