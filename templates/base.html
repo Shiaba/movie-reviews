@@ -48,9 +48,9 @@
     <title>Movie Reviews</title>
   </head>
 
-  <!-- Navigation -->
   <body class="page">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}">Movie Reviews</a>
         <button
@@ -69,13 +69,8 @@
           id="navbarNavAltMarkup"
         >
           <div class="navbar-nav">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              href="{% url 'create_review' %}"
-              >Review Movie</a
-            >
             {% if user.is_authenticated %}
+            <a class="nav-link active" aria-current="page" href="{% url 'create_review' %}">Review Movie</a>
             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
             {% else %}
             <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>

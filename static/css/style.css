@@ -2,6 +2,33 @@ body {
     color: white;
 }
 
+/* Navigation */
+
+#navbar {
+    height: 80px;
+}
+
+#navbar a {
+    font-size: 25px;
+}
+
+#navbar a:hover {
+    color: rgb(150, 5, 5);
+}
+
+.navbar-nav {
+    
+}
+
+
+
+
+
+
+
+
+
+
 
 :root {
     --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
@@ -38,3 +65,27 @@ body {
     box-shadow: #222 1px 0 10px;
     text-decoration: underline;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 992px) {
+    .navbar-nav {
+        padding: 50px;
+        background-color: white;
+        z-index: 1;
+    }
+}
+
