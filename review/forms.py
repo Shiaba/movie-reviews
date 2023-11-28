@@ -8,6 +8,9 @@ class CommentForm(ModelForm):
     class Meta:
         model = Comment
         fields = ('body',)
+        widgets = {
+            'body': forms.Textarea(attrs={'required': True, 'placeholder': 'Write your comment here'}),
+        }
 
 
 class ReviewForm(ModelForm):
@@ -18,5 +21,5 @@ class ReviewForm(ModelForm):
         widgets = {
             'content': forms.Textarea(attrs={'placeholder': 'Write your review here'}),
             'title': forms.TextInput(attrs={'placeholder': 'Title'}),
-            'excerpt': forms.TextInput(attrs={'placeholder': 'Add a short desccription'}),
+            'excerpt': forms.TextInput(attrs={'placeholder': 'Add a short description'}),
         }
