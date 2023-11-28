@@ -90,7 +90,7 @@ class CreateReview(CreateView):
     def form_valid(self, form):
         form.instance.author_id = self.request.user.pk
         form.instance.slug = slugify(form.instance.title)
-        success_message = "Success! Your review is awaiting approval."
+        success_message = "Success! Your review has been created."
         messages.add_message(self.request, messages.SUCCESS, success_message)
         return super().form_valid(form)
 
@@ -105,7 +105,7 @@ class UpdateReview(UpdateView):
     def form_valid(self, form):
         form.instance.author_id = self.request.user.pk
         form.instance.slug = slugify(form.instance.title)
-        success_message = "Success! Your review is awaiting approval."
+        success_message = "Success! Your review has been updated."
         messages.add_message(self.request, messages.SUCCESS, success_message)
         return super().form_valid(form)
 

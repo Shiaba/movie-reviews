@@ -8,7 +8,7 @@
         <div class="card text-center col-12 col-md-6 col-lg-6">
             <strong>
             <h3 class="my-3 text-uppercase text-center">Create Review</h3>
-            <!-- Post create form -->
+            <!-- Post Create form -->
             <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form | crispy }}
@@ -20,3 +20,4 @@
 </div>
 {% endif %}
 {% endblock %}
+
