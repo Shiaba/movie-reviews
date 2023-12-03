@@ -1,4 +1,5 @@
 body {
+    font-size: 20px;
     color: white;
     background-image: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
 }
@@ -10,7 +11,7 @@ body {
 }
 
 #navbar a {
-    font-size: 25px;
+    font-size: 24px;
 }
 
 #navbar a:hover {
@@ -53,6 +54,13 @@ body {
 }
 
 
+/* Image(review detail page) */
+.img {
+    width: 350px;
+    height: auto;
+}
+
+
 /* Media query (min-width 576px) */
 @media screen and (min-width: 576px) {
     #card-content {
@@ -76,9 +84,16 @@ body {
     }
 }
 
+/* Media query (min-width 1200px) */
+@media screen and (min-width: 1200px) {
+    #card-content {
+        height: 800px;
+    }
+}
+
 /* Media query (min-width 1400px) */
 @media screen and (min-width: 1400px) {
     #card-content {
-        height: 820px;
+        height: 840px;
     }
 }

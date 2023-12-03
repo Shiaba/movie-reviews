@@ -3,110 +3,107 @@
 {% load crispy_forms_tags %}
 
 <!-- Review -->
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-12">
-            <div class="img">
+<div class="container mt-4">   
+    <h2 class="row justify-content-center">{{ review.title }}</h2>
+    <div class="container mt-4">
+        <div class="row align-items-start">
+            <div class="col-12 col-lg-6 align-self-center text-center">
                 {% if 'placeholder' in review.featured_image.url %}
-                <img class="row justify-item-center" src="https://placehold.co/600x400/png" alt="" width="100%"
-                    height="auto" />
+                <img class="img" src="https://placehold.co/600x400/png" alt="" />
                 {% else %}
-                <img class="" src="{{ review.featured_image.url }}" alt="" width="100%" height="auto" />
+                <img class="img" src="{{ review.featured_image.url }}" alt="image of the movie" />
                 {% endif %}
             </div>
-            <br />
-            <div class="">
-                <h2 class="">{{ review.title }}</h2>
-                <div class="">
+            <div class="col-12 col-lg-6 align-self-center text-center">
+                <div>
                     <label class="text-primary">{{ review.author }}</label>
                     <span class="fs-5">{{ review.created_on }}</span>
                 </div>
-                <div class="">
+                <div>
                     <label class="text-primary">{{ review.category }}</label>
                 </div>
-                <strong class="">
+                <strong>
                     <i class="fas fa-star" id="star-rating"></i>
                     <label class="text-primary">{{ review.rating }}</label>
                 </strong>
                 <div class="movie-review-content">
                     <p>{{ review.content | safe }}</p>
                 </div>
-
-                <!-- Like & like/comments counter -->
-                <div class="row">
-                    <div class="col-1">
-                        <strong>
-                            {% if user.is_authenticated %}
-                            <form class="d-inline-flex" action="{% url 'review_like' review.slug %}" method="POST">
-                                {% csrf_token %}
-                                {% if liked %}
-                                <button type="submit" name="moviewreview_id" value="{{review.slug}}" class="btn-like">
-                                    <i class="fa-solid fa-thumbs-up"></i>
-                                </button>
-                                {% else %}
-                                <button type="submit" name="moviewreview_id" value="{{review.slug}}" class="btn-like">
-                                    <i class="fa-regular fa-thumbs-up"></i>
-                                </button>
-                                {% endif %}
-                            </form>
-                            {% else %}
-                            <span class="text-secondary">
-                                <i class="fa-regular fa-thumbs-up"></i>
-                            </span>
-                            {% endif %}
-                            <span class="text-secondary">{{ review.number_of_likes }}</span>
-                        </strong>
-                    </div>
-                    <div class="col-1">
-                        {% with comments.count as total_comments %}
-                        <strong class="text-secondary"><i class="far fa-comments"></i>{{ total_comments }}</strong>
-                        {% endwith %}
-                    </div>
-                </div>
-
-                <!-- Compare user id with author id -->
-                <div class="col">
-                    {% if user.is_authenticated %}
-                    {% if user.id == review.author.id %}
-                    <button class="btn btn-warning mt-2 " type="button">
-                        <a style="color: black;" href="{% url 'update_review' review.slug %}">Edit</a>
-                    </button>
-                    <button class="btn btn-danger mt-2 " type="button">
-                        <a style="color: black;" href="{% url 'delete_review' review.slug %}">Delete</a>
-                    </button>
-
-                    {% endif %}
-                    {% endif %}
-                </div>
-
-
-                <!-- Add comments -->
-                {% if commented %}
-                <div class="alert alert-success mt-2" role="alert" id="msg">
-                    Your comment is awaiting approval.
-                </div>
-                {% else %} {% if user.is_authenticated %}
-                <hr class="my-5" />
-                <h2>Leave Comment:</h2>
-                <p>Posting as: {{ user.username }}</p>
-                <form class="form-floating" method="post" style="height: 200px">
-                    {% csrf_token %} {{ comment_form | crispy }}
-                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
-                </form>
-                {% endif %} {% endif %}
-                <br />
-
-                <!-- Created comments -->
-                <h2>Comment section</h2>
-                {% for comment in comments %}
-                <div>
-                    <div>{{ comment.name }} | {{ comment.created_on }}</div>
-                    <div>{{ comment.body | linebreaks }}</div>
-                </div>
-                {% endfor %}
             </div>
         </div>
     </div>
+    <!-- Like & like/comments counter -->
+    <div class="row">
+        <div class="col-1">
+            <strong>
+                {% if user.is_authenticated %}
+                <form class="d-inline-flex" action="{% url 'review_like' review.slug %}" method="POST">
+                    {% csrf_token %}
+                    {% if liked %}
+                    <button type="submit" name="moviewreview_id" value="{{review.slug}}" class="btn-like">
+                        <i class="fa-solid fa-thumbs-up"></i>
+                    </button>
+                    {% else %}
+                    <button type="submit" name="moviewreview_id" value="{{review.slug}}" class="btn-like">
+                        <i class="fa-regular fa-thumbs-up"></i>
+                    </button>
+                    {% endif %}
+                </form>
+                {% else %}
+                <span class="text-secondary">
+                    <i class="fa-regular fa-thumbs-up"></i>
+                </span>
+                {% endif %}
+                <span class="text-secondary">{{ review.number_of_likes }}</span>
+            </strong>
+        </div>
+        <div class="col-1">
+            {% with comments.count as total_comments %}
+            <strong class="text-secondary"><i class="far fa-comments"></i>{{ total_comments }}</strong>
+            {% endwith %}
+        </div>
+    </div>
+    
+    <!-- Compare user id with author id -->
+    <div class="col">
+        {% if user.is_authenticated %}
+        {% if user.id == review.author.id %}
+        <button class="btn btn-warning mt-2 " type="button">
+            <a style="color: black;" href="{% url 'update_review' review.slug %}">Edit</a>
+        </button>
+        <button class="btn btn-danger mt-2 " type="button">
+            <a style="color: black;" href="{% url 'delete_review' review.slug %}">Delete</a>
+        </button>
+    
+        {% endif %}
+        {% endif %}
+    </div>
+    
+    
+    <!-- Add comments -->
+    {% if commented %}
+    <div class="alert alert-success mt-2" role="alert" id="msg">
+        Your comment is awaiting approval.
+    </div>
+    {% else %} {% if user.is_authenticated %}
+    <hr class="my-5" />
+    <h2>Leave Comment:</h2>
+    <p>Posting as: {{ user.username }}</p>
+    <form class="form-floating" method="post" style="height: 200px">
+        {% csrf_token %} {{ comment_form | crispy }}
+        <button type="submit" class="btn btn-primary mt-2">Submit</button>
+    </form>
+    {% endif %} {% endif %}
+    <br />
+    
+    <!-- Created comments -->
+    <h2>Comment section</h2>
+    {% for comment in comments %}
+    <div>
+        <div>{{ comment.name }} | {{ comment.created_on }}</div>
+        <div>{{ comment.body | linebreaks }}</div>
+    </div>
+    {% endfor %}
 </div>
 
 {% endblock content %}
