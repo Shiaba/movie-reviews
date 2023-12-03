@@ -13,20 +13,23 @@
                 {% else %}
                 <img class="img" src="{{ review.featured_image.url }}" alt="image of the movie" />
                 {% endif %}
+                <p class="mb-5">{{ review.excerpt }}</p>
             </div>
             <div class="col-12 col-lg-6 align-self-center text-center">
                 <div>
-                    <label class="text-primary">{{ review.author }}</label>
-                    <span class="fs-5">{{ review.created_on }}</span>
+                    <label class="text-primary">Author: {{ review.author }}</label>
                 </div>
                 <div>
-                    <label class="text-primary">{{ review.category }}</label>
+                    <span class="fs-5">Created: {{ review.created_on }}</span>
+                </div>
+                <div>
+                    <label class="text-primary">Genre: {{ review.category }}</label>
                 </div>
                 <strong>
                     <i class="fas fa-star" id="star-rating"></i>
-                    <label class="text-primary">{{ review.rating }}</label>
+                    <label class="text-primary">{{ review.rating }} / 5</label>
                 </strong>
-                <div class="movie-review-content">
+                <div class="movie-review-content mt-3">
                     <p>{{ review.content | safe }}</p>
                 </div>
             </div>
@@ -34,7 +37,7 @@
     </div>
     <!-- Like & like/comments counter -->
     <div class="row">
-        <div class="col-1">
+        <div class="col-8">
             <strong>
                 {% if user.is_authenticated %}
                 <form class="d-inline-flex" action="{% url 'review_like' review.slug %}" method="POST">
@@ -57,9 +60,9 @@
                 <span class="text-secondary">{{ review.number_of_likes }}</span>
             </strong>
         </div>
-        <div class="col-1">
+        <div id="comments" class="col-4">
             {% with comments.count as total_comments %}
-            <strong class="text-secondary"><i class="far fa-comments"></i>{{ total_comments }}</strong>
+            <strong class="text-secondary"><i class="far fa-comments"></i> {{ total_comments }}</strong>
             {% endwith %}
         </div>
     </div>
