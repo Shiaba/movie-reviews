@@ -1,5 +1,6 @@
 body {
     color: white;
+    background-image: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
 }
 
 /* Navigation */
@@ -21,66 +22,52 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
+/* Movie cards */
 
 :root {
-    --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
-}
-
-body {
-    background: #111 !important;
+    --gradient: linear-gradient(to right top, beige, gold 80%);
 }
 
 .card {
     background: #222;
-    border: 1px solid #dd2476;
-    color: rgba(250, 250, 250, 0.8);
-    margin-bottom: 2rem;
+    border: 1.5px solid #d4af37;
+    color: white;
 }
 
 .btn {
-    border: 5px solid;
+    border: 2px solid;
     border-image-slice: 1;
-    background: var(--gradient) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    border-image-source: var(--gradient) !important;
-    text-decoration: none;
-    transition: all .4s ease;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-image-source: var(--gradient);
+    font-weight: bold;
 }
 
 .btn:hover,
 .btn:focus {
-    background: var(--gradient) !important;
-    -webkit-background-clip: none !important;
-    -webkit-text-fill-color: #fff !important;
-    border: 5px solid #fff !important;
-    box-shadow: #222 1px 0 10px;
-    text-decoration: underline;
+    background: var(--gradient);
+    -webkit-text-fill-color: black;
+    border: 2px solid #d4af37;
+    font-weight: bold;
 }
 
 
+/* Media query (min-width 576px) */
+@media screen and (min-width: 576px) {
+    #card-content {
+        height: 750px;
+    }
 
+    .card-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+/* Media query (max-width 992px) */
 @media (max-width: 992px) {
     .navbar-nav {
         padding: 50px;
@@ -89,3 +76,9 @@ body {
     }
 }
 
+/* Media query (min-width 1400px) */
+@media screen and (min-width: 1400px) {
+    #card-content {
+        height: 820px;
+    }
+}

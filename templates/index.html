@@ -1,12 +1,22 @@
 {% extends "base.html" %} {% block content %}
 
+
+<div class="container my-5">
+    <div class="card text-center">
+        <h2>Welcome to Movie Reviews!</h2>
+        <p class="mt-2">Welcome! This is a site where you can review, read movie reviews, interact with people & share
+            your opinions for others to see.</p>
+        <p>Enjoy your stay!</p>
+    </div>
+</div>
+
 <!-- Review content -->
 
 <div class="container container-table">
     <div class="row">
         {% for review in review_list %}
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card my-2" style="width: 18rem;">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div id="card-content" class="card my-2">
                 {% if "placeholder" in review.featured_image.url %}
                 <img src="https://placehold.co/600x400/png" class="card-img-top" alt="...">
                 {% else %}
@@ -46,6 +56,6 @@
             {% endif %}
         </ul>
     </nav>
-    {% endif %}     
+    {% endif %}
 </div>
 {% endblock %}
