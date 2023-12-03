@@ -18,9 +18,9 @@
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
             <div id="card-content" class="card my-2">
                 {% if "placeholder" in review.featured_image.url %}
-                <img src="https://placehold.co/600x400/png" class="card-img-top" alt="...">
+                <img src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="image of different movie posters">
                 {% else %}
-                <img class="card-img-top" src="{{ review.featured_image.url }}" alt="..." />
+                <img class="card-img-top" src="{{ review.featured_image.url }}" alt="image of the movie"/>
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ review.title }}</h5>
@@ -34,7 +34,7 @@
                         <label class="text-primary">{{ review.rating }}</label>
                     </p>
                     <hr />
-                    <a href="{% url 'review_detail' review.slug %}" class="btn view">Go somewhere</a>
+                    <a href="{% url 'review_detail' review.slug %}" class="btn view">Read Review</a>
                 </div>
             </div>
         </div>
@@ -47,11 +47,11 @@
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo; Previous</a>
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo; Previous page</a>
             </li>
             {% endif %} {% if page_obj.has_next %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next &raquo;</a>
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next page &raquo;</a>
             </li>
             {% endif %}
         </ul>

@@ -9,9 +9,9 @@
         <div class="row align-items-start">
             <div class="col-12 col-lg-6 align-self-center text-center">
                 {% if 'placeholder' in review.featured_image.url %}
-                <img class="img" src="https://placehold.co/600x400/png" alt="" />
+                <img class="img" src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="image of different movie posters"/>
                 {% else %}
-                <img class="img" src="{{ review.featured_image.url }}" alt="image of the movie" />
+                <img class="img" src="{{ review.featured_image.url }}" alt="image of the movie"/>
                 {% endif %}
                 <p class="mb-5">{{ review.excerpt }}</p>
             </div>
