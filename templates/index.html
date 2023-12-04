@@ -24,15 +24,13 @@
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ review.title }}</h5>
-                    <h6 class="card-text my-2">{{ review.author }}</h6>
+                    <h6 class="card-text my-3">{{ review.author }}</h6>
                     <p class="card-text">{{ review.category }}</p>
                     <p class="card-text">{{ review.excerpt }}</p>
-                    <p class="card-text">{{ review.created_on }}
-                        <hr>
+                    <hr>
                         <i class="fa-regular fa-thumbs-up"></i>{{ review.number_of_likes }}
                         <i class="fas fa-star" id="star-rating"></i>
                         <label class="text-primary">{{ review.rating }}</label>
-                    </p>
                     <hr />
                     <a href="{% url 'review_detail' review.slug %}" class="btn view">Read Review</a>
                 </div>

@@ -116,7 +116,7 @@ body {
     }
         
     .card-img-top {
-        max-height: 370px;
+        height: 320px;
     }
 }
 
@@ -161,6 +161,10 @@ body {
     #card-content {
         height: 800px;
     }
+
+    .card-img-top {
+        height: 400px;
+    }
 }
 
 /* Media query (min-width 1400px) */
@@ -170,6 +174,6 @@ body {
     }
 
     .card-img-top {
-        max-height: 460px;
+        height: 460px;
     }
 }
