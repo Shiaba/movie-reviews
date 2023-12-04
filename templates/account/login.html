@@ -8,6 +8,13 @@
 
 <form class="container justify-content-center align-items-center mt-5" style="max-width: 33rem;" method="POST" action="{% url 'account_login' %}">
     {% csrf_token %}
+    {% if form.errors %}
+    <p id="msg" class="alert alert-danger" role="alert">
+        Your username or password was incorrect.
+        <br>
+        Please try again.
+    </p>
+    {% endif %}
     <div class="card p-5">
         <h3>{% trans "Log In" %}</h3>
         <p class="mb-3">Welcome to Movie Reviews!</p>
