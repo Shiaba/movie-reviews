@@ -19,7 +19,7 @@ class ReviewForm(ModelForm):
         fields = ['title', 'excerpt', 'category',
                   'rating', 'featured_image', 'content']
         widgets = {
-            'content': forms.Textarea(attrs={'placeholder': 'Write your review here'}),
+            'content': SummernoteWidget(),
             'title': forms.TextInput(attrs={'placeholder': 'Title'}),
             'excerpt': forms.TextInput(attrs={'placeholder': 'Add a short description'}),
         }
