@@ -20,7 +20,7 @@
                     <label class="text-primary">Author: {{ review.author }}</label>
                 </div>
                 <div>
-                    <span class="fs-5">Created: {{ review.created_on }}</span>
+                    <span class="text-primary">Created: {{ review.created_on }}</span>
                 </div>
                 <div>
                     <label class="text-primary">Genre: {{ review.category }}</label>
@@ -92,21 +92,25 @@
     <hr class="my-5" />
     <h2>Leave Comment:</h2>
     <p>Posting as: {{ user.username }}</p>
-    <form class="form-floating" method="post" style="height: 200px">
+    <form id="gaps" class="form-floating" method="post" style="height: 200px">
         {% csrf_token %} {{ comment_form | crispy }}
         <button type="submit" class="btn btn-primary mt-2">Submit</button>
     </form>
     {% endif %} {% endif %}
-    <br />
     
     <!-- Created comments -->
-    <h2>Comment section</h2>
-    {% for comment in comments %}
-    <div>
-        <div>{{ comment.name }} | {{ comment.created_on }}</div>
-        <div>{{ comment.body | linebreaks }}</div>
+    <br class="my-5">
+    <div class="container my-5">
+        <hr class="mt-5">
+        <h2>Comment section</h2>
+        {% for comment in comments %}
+        <div>
+            <div>{{ comment.name }} | {{ comment.created_on }}</div>
+            <div>{{ comment.body | linebreaks }}</div>
+        </div>
+        <br>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 
 {% endblock content %}
