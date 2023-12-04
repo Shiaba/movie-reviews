@@ -7,6 +7,7 @@ from .models import Review, Category
 from .forms import CommentForm, ReviewForm
 from django.urls import reverse_lazy
 from django.utils.text import slugify
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class MovieList(generic.ListView):
@@ -110,11 +111,16 @@ class UpdateReview(UpdateView):
         return super().form_valid(form)
 
 
-class DeleteReview(DeleteView):
+class DeleteReview(SuccessMessageMixin, DeleteView):
 
     model = Review
     template_name = 'delete_review.html'
     success_url = reverse_lazy('home')
+    success_message = "Your review has been deleted"
+
+    def delete_review(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(DeleteReview, self).delete(request, *args, **kwargs)
 
 
 # Like
