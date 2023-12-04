@@ -30,7 +30,7 @@
                     <label class="text-primary">{{ review.rating }} / 5</label>
                 </strong>
                 <div class="movie-review-content mt-3">
-                    <p>{{ review.content | safe }}</p>
+                    <p id="review-content" >{{ review.content | safe }}</p>
                 </div>
             </div>
         </div>
@@ -103,6 +103,7 @@
     <div class="container my-5">
         <hr class="mt-5">
         <h2>Comment section</h2>
+        <br>
         {% for comment in comments %}
         <div>
             <div>{{ comment.name }} | {{ comment.created_on }}</div>
