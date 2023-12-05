@@ -3,6 +3,9 @@ body {
     font-size: 20px;
     color: white;
     background-image: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .page {
@@ -53,7 +56,7 @@ body {
     color: white !important;
 }
 
-/* Image(review detail page) */
+/* Review detail page */
 .img {
     width: 250px;
     height: auto;
@@ -63,7 +66,8 @@ body {
     color: white !important;
 }
 
-#review-content {
+#review-content
+#comment-section {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -108,6 +112,7 @@ body {
         height: 750px;
     }
 
+    .card-title,
     .card-text {
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -121,6 +126,7 @@ body {
         
     .card-img-top {
         height: 320px;
+        object-fit: cover;
     }
 }
 
