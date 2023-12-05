@@ -4,8 +4,8 @@
 
 <!-- Review -->
 <div class="container mt-4">   
-    <h2 class="row justify-content-center">{{ review.title }}</h2>
-    <div class="container mt-4">
+    <h2 id="review-detail-title" class="row justify-content-center">{{ review.title }}</h2>
+    <div id="review-content" class="container mt-4">
         <div class="row align-items-start">
             <div class="col-12 col-lg-6 align-self-center text-center">
                 {% if 'placeholder' in review.featured_image.url %}
@@ -30,7 +30,7 @@
                     <label class="text-primary">{{ review.rating }} / 5</label>
                 </strong>
                 <div class="movie-review-content mt-3">
-                    <p id="review-content" >{{ review.content | safe }}</p>
+                    <p>{{ review.content | safe }}</p>
                 </div>
             </div>
         </div>
