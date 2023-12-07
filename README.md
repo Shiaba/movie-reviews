@@ -319,7 +319,7 @@ Used to store PostgreSQL database.
 [Back to top](#contents)
 
 # Testing
-
+- I tested the page responsiveness on Firefox, Chrome, Brave & Microsoft edge.
 
 ## Manual testing
 
@@ -348,9 +348,6 @@ Used to store PostgreSQL database.
 | Footer Link to Youtube icon | Youtube page opens in a new tab | Pass |
 
 
-
-
-
 ### Index (review cards page)
 | TEST | OUTCOME | PASS/FAIL|
 |:---:|:---:|:---:|
@@ -375,20 +372,67 @@ Used to store PostgreSQL database.
 | Logged-in user writes all the review correctly except the content part where they only press space & submit the review | The content requires something to be typed into it, however, it does not recognize the difference between a space press or text | Fail |
 | Logged-in user writes a review correctly & presses submit in order to get their review posted in the home page | The review will appear at the top of the page if it is the newest review | Pass |
 
+<br>
 
-### Validator testing
+## Validator testing
+
+### CI Python Linter:
+- Admin.py: All  clear, no errors found
+- Models.py: All  clear, no errors found
+- Forms.py: All  clear, no errors found 
+- Views.py: All  clear, no errors found 
+- Urls.py: All  clear, no errors found
+- Settings.py: 
+  - 38: E501 line too long (88 > 79 characters)
+  - 137: E501 line too long (91 > 79 characters)
+  - 140: E501 line too long (81 > 79 characters)
+  - 143: E501 line too long (82 > 79 characters)
+  - 146: E501 line too long (83 > 79 characters)
+  - 169: E501 line too long (80 > 79 characters)
+
+### Python syntax checker
+- I got the exact same result on all the tests with Python syntax checker. I tested on all the same sites as I did on CI Python Linter 
+![Python syntax checker](./docs/validator/python-syntax-checker.png)
 
 
+### W3C Jigsaw (CSS) 
+ [W3C Jigsaw](./docs/validator/css.png)
 
-- [CI Python Linter]()
-- [Python syntax checker]()
+
+### W3C Validator (HTML)
+- I noticed that a lot of the issues(I checked & found no issues) were from base.html or {% %} creating errors.
+ [Base](./docs/validator/w3c-base.png)
+ [Create Review](./docs/validator/w3c-create-review.png)
+ [Delete Review](./docs/validator/w3c-delete-review.png)
+ [Index](./docs/validator/w3c-index.png)
+ [Login](./docs/validator/w3c-login.png)
+ [Logout](./docs/validator/w3c-logout.png)
+ [Review Detail](./docs/validator/w3c-review-detail.png)
+ [Signup](./docs/validator/w3c-signup.png)
+ [Update Review](./docs/validator/w3c-update-review.png)
+
 
 ### Accessibility
  
- [Lighthouse testing]()
-
+ - [Mobile Index](./docs/lighthouse/mobile-index.png)
+ - [Desktop Index](./docs/lighthouse/desktop-index.png)
+ - [Mobile Review Detail](./docs/lighthouse/mobile-review-detail.png)
+ - [Desktop Review Detail](./docs/lighthouse/desktop-review-detail.png)
+ - [Mobile Create Review](./docs/lighthouse/mobile-create-review.png)
+ - [Desktop Create Review](./docs/lighthouse/desktop-create-review.png)
+ - [Mobile Delete Review](./docs/lighthouse/mobile-delete-review.png)
+ - [Desktop Delete Review](./docs/lighthouse/desktop-delete-review.png)
+ - [Mobile Update Review](./docs/lighthouse/mobile-update-review.png)
+ - [Desktop Update Review](./docs/lighthouse/desktop-update-review.png)
+ - [Mobile Login](./docs/lighthouse/mobile-login.png)
+ - [Desktop Login](./docs/lighthouse/desktop-login.png)
+ - [Mobile Logout](./docs/lighthouse/mobile-logout.png)
+ - [Desktop Logout](./docs/lighthouse/desktop-logout.png)
+ - [Mobile Signup](./docs/lighthouse/mobile-signup.png)
+ - [Desktop Signup](./docs/lighthouse/desktop-signup.png)
 
 [Back to top](#contents)
+
 
 # Bug Encounters
 
@@ -405,6 +449,8 @@ Used to store PostgreSQL database.
 ## Unsolved and scrapped features:
 - I Couldn’t get the blankspace issue resolved when user comments with sending only a empty space comment. The User will recieve a alert that the "Your comment is awaiting approval". However, after the comment was sent, there is nothing sent to the admin site since the comment was empty.
 
+- I get Instance of ‘ManyToManyField’ has no ‘count’ member – pylint(no-member) from models.py
+- I also get 3 warnings of “Class ‘Review’ has no ‘objects’ member – pylint(no-member)” from views.py
 
 
 [Back to top](#contents)

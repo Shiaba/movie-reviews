@@ -10,7 +10,7 @@
     {% csrf_token %}
     <div class="card p-5">
         <h3>{% trans "Sign Up" %}</h3>
-        <strong><p class="my-3">Welcome to Movie Reviews! Sign up here!</p></strong>
+        <p class="my-3"><strong>Welcome to Movie Reviews! Sign up here!</strong></p>
         {{ form.as_p }}
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
